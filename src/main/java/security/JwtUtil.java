@@ -11,11 +11,12 @@ import java.util.Map;
 
 @Component
 public class JwtUtil {
-	private String secretKey = "secret"; // Use a stronger key in production
-	private long validityInMilliseconds = 3600000; // 1 hour
+	private final String secretKey = "secret"; // Use a stronger key in production
 	
 	public String generateToken(String username) {
 		Map<String, Object> claims = new HashMap<>();
+		// 1 hour
+		long validityInMilliseconds = 3600000;
 		return Jwts.builder()
 				.setClaims(claims)
 				.setSubject(username)
